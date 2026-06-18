@@ -119,7 +119,8 @@ Your `bottleneck.tpl` file should look like this:
 <br/>
 
 **File 2**: The file `bottleneck.est` which specifies the parameters to
-be learned. It shoudl look like this:
+be learned. It should look like this (make sure there is a new line
+after the “output” tag):
 
     // Parameter file for the bottleneck model
     // ***************************************
@@ -139,7 +140,8 @@ parameter should be reported.
 **File 3**: The file with the obsered SFS. `fastsimcoal2` expects this
 to have a very specific name, namely `bottleneck_DAFpop0.obs`, which
 consists of the name of the `tpl` file followed by `_DAFpop0.obs` as
-this is the derived SFS.
+this is the derived SFS. It also expects that file to be in the same
+folder as your `tpl` file - so you need to move it there.
 
 You can then launch an inference as follows:
 
@@ -194,7 +196,7 @@ Your `bottleneck.tpl` file should look like this:
     0
     //Historical event: time, source, sink, migrants, new deme size, new growth rate, new migration matrix
     1 historical events
-    T_BOTTLENECK 0 0 1 20 0 0
+    T_BOTTLENECK 0 0 1 SIZE_CHANGE 0 0
     //Number of independent chromosome
     1 0
     //Number of contiguous linkage blocks
@@ -209,7 +211,7 @@ Your `bottlneck.est` file should look like this:
     [PARAMETERS]
     //#isInt? #name #dist. #min #max
     1 T_BOTTLENECK unif 1 10000 output
-    0 SIZE_CHANGE unif 0 10 output
+    0 SIZE_CHANGE unif 0 50 output
 
 With these files, estimates should run very well!
 </details>
